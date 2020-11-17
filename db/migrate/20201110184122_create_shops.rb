@@ -3,7 +3,7 @@ class CreateShops < ActiveRecord::Migration[6.0]
     create_table :shops do |t|
       t.string :name
       t.integer :books_sold_count
-      t.integer :copies_in_stock
+      t.belongs_to :publisher
       t.timestamps
     end
   end

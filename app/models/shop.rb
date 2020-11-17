@@ -1,4 +1,5 @@
 class Shop < ApplicationRecord
-  has_many :books
-  has_many :publishers, through: :books
+  has_many :sellings
+  has_many :books, through: :sellings
+  belongs_to :publisher
 end

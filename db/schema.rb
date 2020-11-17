@@ -10,16 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_10_184122) do
+ActiveRecord::Schema.define(version: 2020_11_17_084259) do
 
   create_table "books", force: :cascade do |t|
     t.string "title"
-    t.integer "shop_id"
     t.integer "publisher_id"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.integer "copies_in_stock"
     t.index ["publisher_id"], name: "index_books_on_publisher_id"
-    t.index ["shop_id"], name: "index_books_on_shop_id"
   end
 
   create_table "publishers", force: :cascade do |t|
@@ -28,12 +25,24 @@ ActiveRecord::Schema.define(version: 2020_11_10_184122) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "sellings", force: :cascade do |t|
+    t.integer "book_id"
+    t.integer "shop_id"
+    t.integer "publisher_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["book_id"], name: "index_sellings_on_book_id"
+    t.index ["publisher_id"], name: "index_sellings_on_publisher_id"
+    t.index ["shop_id"], name: "index_sellings_on_shop_id"
+  end
+
   create_table "shops", force: :cascade do |t|
     t.string "name"
     t.integer "books_sold_count"
-    t.integer "copies_in_stock"
+    t.integer "publisher_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["publisher_id"], name: "index_shops_on_publisher_id"
   end
 
 end
