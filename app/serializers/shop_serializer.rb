@@ -3,7 +3,7 @@ class ShopSerializer < ActiveModel::Serializer
   belongs_to :publisher
 
   def books_in_stock
-    object.books.map {|book| {id: book.id, title: book.title, copies_in_stock: book.copies_in_stock}}
+    object.books.map {|book| {id: book.id, title: book.title, sales_by_each_book: book.sellings}}
   end
 
 end

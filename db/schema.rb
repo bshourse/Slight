@@ -10,12 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_17_084259) do
+ActiveRecord::Schema.define(version: 2020_11_19_122633) do
 
   create_table "books", force: :cascade do |t|
     t.string "title"
     t.integer "publisher_id"
-    t.integer "copies_in_stock"
     t.index ["publisher_id"], name: "index_books_on_publisher_id"
   end
 
@@ -31,6 +30,9 @@ ActiveRecord::Schema.define(version: 2020_11_17_084259) do
     t.integer "publisher_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "copies"
+    t.integer "selled_copies"
+    t.integer "copies_in_stock"
     t.index ["book_id"], name: "index_sellings_on_book_id"
     t.index ["publisher_id"], name: "index_sellings_on_publisher_id"
     t.index ["shop_id"], name: "index_sellings_on_shop_id"
