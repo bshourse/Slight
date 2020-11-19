@@ -5,13 +5,13 @@ class Api::V1::SellingsController < ApiController
 
   def show
     @selling = Selling.find(params[:id])
-    render json: @selling , except: [:created_at, :updated_at]
+    render json: @selling
   end
 
   def update
     @selling = Selling.find(params[:id])
     @selling.update(selling_params)
-    render json: @selling, except: [:created_at]
+    render json: @selling
   end
 
   private
