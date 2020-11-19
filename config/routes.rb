@@ -5,6 +5,8 @@ Rails.application.routes.draw do
         resources :shops
       end
       resources :shops
+      resources :books
+      resources :sellings
     end
   end
 end
