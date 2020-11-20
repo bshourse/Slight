@@ -10,8 +10,12 @@ class Api::V1::BooksController < ApiController
 
   def update
     @book = Book.find(params[:id])
-    @book.update(book_params)
-    render json: @book
+
+    if @book.update(book_params)
+      render json: @book, status: :ok
+    else
+      render json: @book.errors, status: :unprocessable_entity
+    end
   end
 
   private
