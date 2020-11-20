@@ -10,8 +10,12 @@ class Api::V1::PublishersController < ApiController
 
   def update
     @publisher = Publisher.find(params[:id])
-    @publisher.update(publisher_params)
-    render json: @publisher
+
+    if @publisher.update(publisher_params)
+      render json: @publisher, status: :ok
+    else
+      render json: @publisher.errors, status: :unprocessable_entity
+    end
   end
 
   private

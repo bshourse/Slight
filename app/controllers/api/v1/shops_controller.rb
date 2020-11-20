@@ -10,8 +10,12 @@ class Api::V1::ShopsController < ApiController
 
   def update
     @shop = Shop.find(params[:id])
-    @shop.update(shop_params)
-    render json: @shop
+
+    if @shop.update(shop_params)
+      render json: @shop, status: :ok
+    else
+      render json: @shop.errors, status: :unprocessable_entity
+    end
   end
 
   private

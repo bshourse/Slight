@@ -10,10 +10,14 @@ class Api::V1::SellingsController < ApiController
 
   def update
     @selling = Selling.find(params[:id])
-    @selling.update(selling_params)
-    $shop = Shop.find(@selling.shop_id)
-    $shop.save
-    render json: @selling
+
+    if @selling.update(selling_params)
+      $shop = Shop.find(@selling.shop_id)
+      $shop.save
+      render json: @selling, status: :ok
+    else
+      render json: @selling.errors, status: :unprocessable_entity
+    end
   end
 
   private
