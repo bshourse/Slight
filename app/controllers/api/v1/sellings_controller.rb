@@ -11,6 +11,8 @@ class Api::V1::SellingsController < ApiController
   def update
     @selling = Selling.find(params[:id])
     @selling.update(selling_params)
+    $shop = Shop.find(@selling.shop_id)
+    $shop.save
     render json: @selling
   end
 

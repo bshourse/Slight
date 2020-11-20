@@ -1,5 +1,5 @@
 class ShopSerializer < ActiveModel::Serializer
-  attributes :id, :name, :books_in_stock
+  attributes :id, :name, :books_sold_count, :books_in_stock
   belongs_to :publisher
 
   def books_in_stock
