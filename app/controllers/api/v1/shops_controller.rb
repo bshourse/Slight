@@ -3,6 +3,10 @@ class Api::V1::ShopsController < ApiController
   before_action :validate_api_key
   skip_before_action :verify_authenticity_token
 
+  def index
+    render json: Shop.all
+  end
+
   def show
     @shop = Shop.find(params[:id])
     render json: @shop

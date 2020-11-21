@@ -3,6 +3,10 @@ class Api::V1::BooksController < ApiController
   before_action :validate_api_key
   skip_before_action :verify_authenticity_token
 
+  def index
+    render json: Book.all
+  end
+
   def show
     @book = Book.find(params[:id])
     render json: @book
@@ -17,7 +21,6 @@ class Api::V1::BooksController < ApiController
       render json: @book.errors, status: :unprocessable_entity
     end
   end
-
 
   def update
     @book = Book.find(params[:id])

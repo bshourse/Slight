@@ -3,6 +3,10 @@ class Api::V1::SellingsController < ApiController
   before_action :validate_api_key
   skip_before_action :verify_authenticity_token
 
+  def index
+    render json: Selling.all
+  end
+
   def show
     @selling = Selling.find(params[:id])
     render json: @selling
