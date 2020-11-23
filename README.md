@@ -4,23 +4,32 @@
 
 Publisher:
 http://localhost:3000/api/v1/publishers/1 - GET publisher show (id на конце может меняться)
+
 http://localhost:3000/api/v1/publishers/1 - PATCH publisher update
 
 Book:
 http://localhost:3000/api/v1/books - GET book index
+
 http://localhost:3000/api/v1/books/1 - GET book show (id на конце может меняться)
+
 http://localhost:3000/api/v1/books - POST  book create
+
 http://localhost:3000/api/v1/books/1 - PATCH book update
+
 http://localhost:3000/api/v1/books/1 - DELETE book destroy
 
 Shop:
 http://localhost:3000/api/v1/shops - GET shop index
+
 http://localhost:3000/api/v1/shops/1 - GET shop show
+
 http://localhost:3000/api/v1/shops/1 - PATCH shop update
 
 Selling:
 http://localhost:3000/api/v1/sellings - GET selling index
+
 http://localhost:3000/api/v1/sellings/1 - GET selling show
+
 http://localhost:3000/api/v1/sellings/1 - PATCH selling update
 
 2.	Для того чтобы отправить любой запрос в header-ах обязательно нужно прописать x-api-key: Slight иначе всегда будет отдаваться 403-я ошибка. Пример если использовать CURL:
